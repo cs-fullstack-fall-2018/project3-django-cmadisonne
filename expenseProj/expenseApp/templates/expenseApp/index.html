@@ -1,0 +1,48 @@
+{% extends "expenseApp/base.html" %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="jumbotron">
+    <h1>{{user.get_username}}'s Expense Tracker</h1>
+{% else %}
+Not logged in
+{% endif %}
+    <h5 align="right">Save more money</h5>
+</div>
+{% if form_list %}
+    {% for eachItem in form_list %}
+    <div align="right" class="checking">
+        <h3>Balance : ${{ eachItem.checking }}</h3>
+        <hr class="hr"/>
+        <a href="{% url 'transaction' pk=eachItem.pk%}">Log A Transaction</a>
+    </div>
+    <br>
+    <div align="right" class="emergency">
+        <h3 >Emergency Funds: ${{ eachItem.emergency }}</h3>
+        <hr class="hr"/>
+        <a href="{% url 'emergencyTransaction' %}">Log Emergency Fund Transaction</a>
+    </div>
+<br>
+<hr width="75%" class="hr"/>
+    <div align="middle" class="history">
+        <H1>Transaction History</H1>
+        <hr width="75%" class="hr"/>
+    </div>
+<table>
+    <tr>
+        <th></th>
+    </tr>
+</table>
+
+    {% endfor %}
+
+{% else %}
+<p>No Expenses Available.</p>
+<strong> Set Up Your Personal Account </strong>
+<form action="{% url 'setup' %}">
+    <input type="submit" value="Go!">
+</form>
+{% endif %}
+
+{% endblock %}
