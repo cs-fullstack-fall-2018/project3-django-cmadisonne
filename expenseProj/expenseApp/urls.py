@@ -7,5 +7,5 @@ urlpatterns = [
     path('setup/', views.setup, name='setup'),
     path('signup/', views.signup, name='signup'),
     path('transaction/<int:pk>', views.transaction, name='transaction'),
-    path('emergency/transaction/', views.emergencyTransaction, name='emergencyTransaction'),
+    path('emergency/transaction/<int:pk>', views.emergencyTransaction, name='emergencyTransaction'),
 ]

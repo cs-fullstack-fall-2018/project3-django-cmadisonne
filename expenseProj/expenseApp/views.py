@@ -34,7 +34,8 @@ def setup(request):
 def index (request):
     # This is the home page for users that displays they balances and history
     form_list = ExpenseModel.objects.filter(username = request.user)
-    context = {'form_list':form_list}
+    history_list = Transaction.objects.filter(account_fk = request.user)
+    context = {'form_list':form_list, 'history_list': history_list}
     return render(request, 'expenseApp/index.html', context)
 
 def transaction (request, pk):
@@ -44,21 +45,25 @@ def transaction (request, pk):
         form = TransactionForm(request.POST)
         if form.is_valid():
             checking_instance.checking = form.cleaned_data['depositOrWithdrawl'] + checking_instance.checking
+            depositOrWithdrawl = form.cleaned_data['depositOrWithdrawl']
+            form.save()
             checking_instance.save()
             return redirect('index')
     else:
         form = TransactionForm()
         return render(request, 'expenseApp/transaction.html', {'form':form})
 
-def emergencyTransaction (request):
+def emergencyTransaction (request, pk):
     # this is the emergency funds transaction function
+    emergency_instance= get_object_or_404(ExpenseModel, pk=pk)
     if request.method == 'POST':
         form = TransactionForm(request.POST)
         if form.is_valid():
+            emergency_instance.emergency = form.cleaned_data['depositOrWithdrawl'] + emergency_instance.emergency
+            emergency_instance.save()
             return redirect('index')
     else:
         form = TransactionForm()
         return render(request, 'expenseApp/emergencyTransaction.html', {'form':form})
-
 
 

@@ -21,19 +21,30 @@ Not logged in
     <div align="right" class="emergency">
         <h3 >Emergency Funds: ${{ eachItem.emergency }}</h3>
         <hr class="hr"/>
-        <a href="{% url 'emergencyTransaction' %}">Log Emergency Fund Transaction</a>
+        <a href="{% url 'emergencyTransaction' pk=eachItem.pk %}">Log Emergency Fund Transaction</a>
     </div>
 <br>
 <hr width="75%" class="hr"/>
-    <div align="middle" class="history">
-        <H1>Transaction History</H1>
-        <hr width="75%" class="hr"/>
-    </div>
-<table>
-    <tr>
-        <th></th>
-    </tr>
-</table>
+<div align="middle" class="history">
+    <H1>Transaction History</H1>
+    <hr width="75%" class="hr"/>
+    {% if history_list %}
+    <table>
+        <tr>
+            <th>Transaction</th>
+            <th>Date</th>
+        </tr>
+        {% for eachHistory in history_list %}
+        <tr>
+            <td>{{ eachHistory.depositOrWithdrawl }}</td>
+            <td>{{ eachHistory.timeOfTransaction }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+</div>
+
 
     {% endfor %}
 
