@@ -1,9 +1,18 @@
 {% extends "expenseApp/base.html" %}
 
 {% block body %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">Submit</button>
-</form>
+{% if form_list %}
+    {% for eachItem in form_list %}
+        <div align="right" class="checking">
+            <h3>Balance : ${{ eachItem.emergency }}</h3>
+        </div>
+    {% endfor %}
+{% endif %}
+<div class="transactionForm" align="middle">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input class="btn btn-secondary" type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}

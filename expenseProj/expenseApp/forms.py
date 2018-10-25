@@ -15,6 +15,3 @@ class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
         fields = '__all__'
-        widgets = {
-            'account_fk': forms.HiddenInput(),
-        }

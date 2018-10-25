@@ -3,13 +3,11 @@
 {% block body %}
 
 {% if user.is_authenticated %}
-<div class="jumbotron">
-    <h1>{{user.get_username}}'s Expense Tracker</h1>
+
 {% else %}
 Not logged in
 {% endif %}
-    <h5 align="right">Save more money</h5>
-</div>
+
 {% if form_list %}
     {% for eachItem in form_list %}
     <div align="right" class="checking">

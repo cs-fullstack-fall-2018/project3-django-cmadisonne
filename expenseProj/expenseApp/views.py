@@ -45,13 +45,16 @@ def transaction (request, pk):
         form = TransactionForm(request.POST)
         if form.is_valid():
             checking_instance.checking = form.cleaned_data['depositOrWithdrawl'] + checking_instance.checking
-            depositOrWithdrawl = form.cleaned_data['depositOrWithdrawl']
+            form.depositOrWithdrawl = form.cleaned_data['depositOrWithdrawl']
+            form.account_fk = request.user
             form.save()
             checking_instance.save()
             return redirect('index')
     else:
         form = TransactionForm()
-        return render(request, 'expenseApp/transaction.html', {'form':form})
+        form_list = ExpenseModel.objects.filter(username = request.user)
+        context = {'form_list':form_list, 'form': form}
+        return render(request, 'expenseApp/transaction.html', context)
 
 def emergencyTransaction (request, pk):
     # this is the emergency funds transaction function
@@ -60,10 +63,15 @@ def emergencyTransaction (request, pk):
         form = TransactionForm(request.POST)
         if form.is_valid():
             emergency_instance.emergency = form.cleaned_data['depositOrWithdrawl'] + emergency_instance.emergency
+            form.depositOrWithdrawl = form.cleaned_data['depositOrWithdrawl']
+            form.account_fk = request.user
+            form.save()
             emergency_instance.save()
             return redirect('index')
     else:
         form = TransactionForm()
-        return render(request, 'expenseApp/emergencyTransaction.html', {'form':form})
+        form_list = ExpenseModel.objects.filter(username = request.user)
+        context = {'form_list':form_list, 'form': form}
+        return render(request, 'expenseApp/emergencyTransaction.html',context)
 
 

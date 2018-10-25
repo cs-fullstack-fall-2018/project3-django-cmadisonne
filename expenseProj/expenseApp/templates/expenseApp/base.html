@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{% static 'css/expense.css' %}">
 </head>
 <body>
+<div class="jumbotron">
+    <h1>{{user.get_username}}'s Expense Tracker</h1>
+    <h5 align="right">Save more money</h5>
+</div>
 {% block body %}
 {% endblock %}
 </body>
