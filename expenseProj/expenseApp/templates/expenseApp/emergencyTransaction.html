@@ -1,6 +1,7 @@
 {% extends "expenseApp/base.html" %}
 
 {% block body %}
+<h1 align="middle" style="color: midnightblue">Emergency Funds Account</h1>
 {% if form_list %}
     {% for eachItem in form_list %}
         <div align="right" class="checking">
@@ -8,11 +9,24 @@
         </div>
     {% endfor %}
 {% endif %}
-<div class="transactionForm" align="middle">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input class="btn btn-secondary" type="submit" value="Submit">
-    </form>
+<div align="middle">
+    <br>
+    <div class="card text-center" style="width: 500px">
+        <div class="card-header">
+            <h1>Fill Out Transaction Form</h1>
+        </div>
+        <div class="card-body">
+            <div class="transactionForm" align="middle">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <input class="btn btn-secondary" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Save More Money</p>
+        </div>
+    </div>
 </div>
 {% endblock %}

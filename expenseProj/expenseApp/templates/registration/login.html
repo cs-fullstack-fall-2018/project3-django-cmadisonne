@@ -1,3 +1,5 @@
+{% extends "expenseApp/base.html" %}
+{% block body %}
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -6,28 +8,43 @@
 {% if user.is_authenticated %}
 <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
-{% else %}
-<p>Please login to see this page.</p>
 {% endif %}
 {% endif %}
 
-<form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
+<div align="middle">
+<div class="card text-center" style="width: 500px">
+    <div class="card-header">
+        <h3>Log-In Here</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
 
-    <div>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+            <div>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </div>
+            <br>
+            <div>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </div>
     </div>
-    <br>
-    <div>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+    <div class="card-footer">
+            <br>
+            <div>
+                <input class="btn btn-secondary" type="submit" value="Log-In!">
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
     </div>
+</div>
+    <div class="loginFooter">
+        <hr/>
+        <h3>Not a user? Become One!</h3>
+        <h5>Click the link below to sign up</h5>
+        <a style="text-underline: darkblue" href="{% url 'signup' %}">Sign Up</a>
+    </div>
+</div>
 
-    <div>
-        <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </div>
-</form>
-<hr/>
-<a href="{% url 'signup' %}">Sign Up</a>
+{% endblock %}

@@ -1,8 +1,9 @@
 {% extends "expenseApp/base.html" %}
 
 {% block body %}
-<h1>Log-In or Sign Up</h1>
-<h3>Begin Saving Today</h3>
-<p>Already a User? </p>
+<h2 align="middle">Oops! Looks Like You're Not Signed In</h2>
+<div align="middle">
+<h4>Begin Saving Today</h4>
 <a href="{% url 'login' %}">Login</a>
+</div>
 {% endblock %}
