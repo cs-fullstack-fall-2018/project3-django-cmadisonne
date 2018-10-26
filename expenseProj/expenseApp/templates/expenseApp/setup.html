@@ -1,12 +1,22 @@
 {% extends "expenseApp/base.html" %}
 {% block body %}
-<div class="setup">
-    <form method="POST">
-        <h1>Sign - Up</h1>
-        <hr/>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="btn btn-secondary" type="submit" value="Submit">
-    </form>
+<div class="setup" align="middle">
+    <div class="card text-center" style="width: 500px">
+        <div class="card-header">
+            <h1>Set-Up Your Account</h1>
+        </div>
+        <div class="card-body">
+            <div class="transactionForm" align="middle">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn btn-secondary" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Save More Money</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
