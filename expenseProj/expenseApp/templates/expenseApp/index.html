@@ -47,9 +47,13 @@ Not logged in
     {% endfor %}
 
 {% else %}
+
 <div align="middle">
+    <div class="AccountSetUp">
+    <h1>New Member! Welcome!</h1>
     <p>No Expenses Available.</p>
     <strong>*Set Up Your Personal Account </strong>
+    </div>
     <form action="{% url 'setup' %}">
         <br>
         <input class="btn btn-secondary" type="submit" value="Go!">
