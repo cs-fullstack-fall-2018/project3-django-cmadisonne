@@ -57,4 +57,9 @@ tr:nth-child(even) {
 .AccountSetUp{
     color: midnightblue;
 }
+footer{
+    text-align: center;
+    bottom: -80px;
+    color: midnightblue;
+}
 
