@@ -1,0 +1,65 @@
+.jumbotron{
+    background-color:midnightblue;
+    color: white;
+    padding-bottom: 10px;
+}
+.checking{
+    background-color: lightgrey;
+    color: midnightblue;
+    padding-right: 20px;
+}
+.emergency{
+    background-color: lightgrey;
+    color: midnightblue;
+    padding-right: 20px;
+}
+.history{
+    color: midnightblue;
+}
+.hr{
+    background-color: midnightblue;
+}
+.transactionForm{
+    align-content: center;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    color: midnightblue;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.header{
+    background-color: midnightblue;
+}
+
+.btn-secondary{
+    background-color: midnightblue;
+}
+.text-center{
+    color: midnightblue;
+}
+.loginFooter{
+    color: midnightblue;
+}
+.setup{
+    color: midnightblue;
+}
+.AccountSetUp{
+    color: midnightblue;
+}
+footer{
+    text-align: center;
+    bottom: -80px;
+    color: midnightblue;
+}
+
