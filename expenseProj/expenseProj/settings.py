@@ -25,7 +25,7 @@ SECRET_KEY = '*jop2&162q(u=*xzv@lfceurr-yb*l*^t=g6bk!rls654bzv#_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['68.183.96.229']
+ALLOWED_HOSTS = ['68.183.96.229','app1.madisonnecooper.com']
 
 
 # Application definition
